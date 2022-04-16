@@ -5,7 +5,7 @@
   "description": "[![Actions Status](https://github.com/Rema04Dev/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Rema04Dev/frontend-project-lvl2/actions)",
   "main": "bin/gendiff.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
   },
   "bin": {
     "gendiff": "bin/gendiff.js"
@@ -30,6 +30,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.0.0"
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1"
   }
 }

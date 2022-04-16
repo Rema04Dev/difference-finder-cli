@@ -1,0 +1,9 @@
+{
+    "name": "Dmitry",
+    "age": 31,
+    "location": {
+        "country": "Russia",
+        "city": "Moscow"
+    },
+    "married": false
+}
