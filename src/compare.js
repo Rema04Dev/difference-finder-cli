@@ -1,64 +1,51 @@
 import fs from 'fs';
 import _ from 'lodash';
 
-const areObjectsEqual = (obj1, obj2) => _.isEqual(obj1, obj2);
-const getEqualKeys = (obj1, obj2) => {
-  const entries = Object.entries(obj1);
-  const equalKeys = {};
-  for (const [key, value] of entries) {
-    if (_.has(obj2, key) && obj1[key] === obj2[key]) {
-      equalKeys[key] = value;
-    }
-  }
-  return equalKeys;
-};
-const getDifferentKeys = (obj1, obj2) => {
-  const entries = Object.entries(obj1);
-  const result1 = {};
-  const result2 = {};
+const parseData = (data) => JSON.parse(data);
+const getKeys = (obj) => Object.keys(obj);
 
-  for (const [key, value] of entries) {
-    if (_.has(obj2, key) && obj1[key] !== obj2[key]) {
-      result1[`- ${key}`] = value;
-      result2[`+ ${key}`] = obj2[key];
+const getObjectWithMatualKeys = (object1, object2) => {
+    const keys1 = getKeys(object1)
+    const keys2 = getKeys(object2)
+    const commonKeys = _.intersection(keys1, keys2);
+    const result = {};
+    for (const key of commonKeys) {
+        if (object1[key] !== object2[key]) {
+            result['-' + key] = object1[key];
+            result['+' + key] = object2[key];
+        } else {
+            result[key] = object1[key];
+        }
     }
-  }
-  return Object.assign(result1, result2);
+    return result;
 };
 
-const uniqFirstObject = (obj1, obj2) => {
-  const keys = Object.keys(obj1);
-  const result = {};
-  for (const key of keys) {
-    if (!_.has(obj2, key)) {
-      result[`- ${key}`] = obj1[key];
+const getDifferentKeys = (object1, object2) => {
+    const keys1 = getKeys(object1)
+    const keys2 = getKeys(object2)
+    const uniqueKeysFromObject1 = _.difference(keys1, keys2)
+    const uniqueKeysFromObject2 = _.difference(keys2, keys1);
+    const result = {};
+    for (const key of uniqueKeysFromObject1) {
+        result['-' + key] = key;
     }
-  }
-  return result;
-};
-const uniqSecondObject = (obj1, obj2) => {
-  const keys = Object.keys(obj2);
-  const result = {};
-  for (const key of keys) {
-    if (!_.has(obj1, key)) {
-      result[`+ ${key}`] = obj2[key];
+    for (const key of uniqueKeysFromObject2) {
+        result['+' + key] = key;
     }
-  }
-  return result;
+    return result;
 };
 
-const compareFiles = (file1, file2) => {
-  const obj1 = JSON.parse(fs.readFileSync(file1, 'utf8'));
-  const obj2 = JSON.parse(fs.readFileSync(file2, 'utf8'));
-  if (areObjectsEqual(obj1, obj2)) {
-    return obj1;
-  }
-  const equalKeys = getEqualKeys(obj1, obj2);
-  const differentKeys = getDifferentKeys(obj1, obj2);
-  const uniqKeysOfFirstObj = uniqFirstObject(obj1, obj2);
-  const uniqKeysOfSecondObj = uniqSecondObject(obj1, obj2);
-  const diffObject = JSON.stringify(Object.assign(equalKeys, differentKeys, uniqKeysOfFirstObj, uniqKeysOfSecondObj), false, ' ');
-  console.log(diffObject);
+const compareFiles = (filepath1, filepath2) => {
+    const data1 = fs.readFileSync(filepath1, 'utf-8');
+    const data2 = fs.readFileSync(filepath2, 'utf-8');
+    const object1 = parseData(data1);
+    const object2 = parseData(data2);
+    
+    const result = Object.assign(
+        getObjectWithMatualKeys(object1, object2),
+        getDifferentKeys(object1, object2)
+    );
+    console.log(result);
 };
 
 export default compareFiles;
