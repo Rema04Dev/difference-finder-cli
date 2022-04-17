@@ -1,7 +1,5 @@
 {
-  "name": "Ivan",
-  "age": 32,
-  "married": true,
-  "children": ["Alena", "Maria"],
-  "city": "Moscow"
+    "timeout": 20,
+    "verbose": true,
+    "host": "hexlet.io"
 }
