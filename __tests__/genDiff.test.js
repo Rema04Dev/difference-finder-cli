@@ -1,4 +1,10 @@
+import fs from 'fs';
+import path from 'path';
 import { compareObjects } from '../src/compare.js'
+
+const getFixturesPath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(getFixturesPath(filename), 'utf-8')
+
 describe('genDiff', () => {
   it('test 1', () => {
     const actual = compareObjects({}, {});
