@@ -1,9 +1,7 @@
 {
-    "name": "Dmitry",
-    "age": 31,
-    "location": {
-        "country": "Russia",
-        "city": "Moscow"
-    },
-    "married": false
+  "name": "Ivan",
+  "age": 32,
+  "married": true,
+  "children": ["Alena", "Maria"],
+  "city": "Moscow"
 }

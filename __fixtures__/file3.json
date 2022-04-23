@@ -1,13 +1,6 @@
 {
-    "name": "Alexandr",
-    "age": 38,
-    "location": {
-        "country": "Russia",
-        "city": "Moscow"
-    },
-    "married": true,
-    "children": [
-        { "name": "Maria", "age": 8, "sex": "female" },
-        { "name": "Ivan", "age": 5, "sex": "male" }
-    ]
+    "name": "ALexandr",
+    "age": 30,
+    "married": false,
+    "city": "Moscow"
 }
