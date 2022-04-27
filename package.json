@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Rema04Dev/frontend-project-lvl2#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "commander": "^9.1.0",
     "fs": "^0.0.1-security",
     "js-yaml": "^4.1.0",

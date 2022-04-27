@@ -1,36 +1,38 @@
 import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
-import parseData from '../src/parsers.js'
-const getAbsolutePath = (fileName) => path.resolve(process.cwd(), '__fixtures__', fileName);
-const getFormat = (filename) => path.extname(filename);
+import colors from 'colors';
 
-export const compareObjects = (object1, object2) => {
-  const keys1 = Object.keys(object1);
-  const keys2 = Object.keys(object2);
-  const keys = _.union(keys1, keys2).sort();
-  const result = {};
-  for (const key of keys) {
-    if (!Object.hasOwn(object1, key)) {
-      result[`+${key}`] = object2[key];
-    } else if (!Object.hasOwn(object2, key)) {
-      result[`-${key}`] = object1[key];
-    } else if (object1[key] !== object2[key]) {
-      result[`-${key}`] = object1[key];
-      result[`+${key}`] = object2[key];
+colors.enable();
+
+const buildAbsolutePath = (filename) => path.resolve(process.cwd(), '__fixtures__', filename);
+const readFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
+const getFormat = (filename) => path.extname();
+const compareObjects = (objects) => {
+  const [obj1, obj2] = objects;
+  const keys = _.union(_.keys(obj1), _.keys(obj2))
+  const diff = keys.reduce((acc, key) => {
+    if (!_.has(obj2, key)) {
+      acc += `- ${key}: ${obj1[key]}\n`.red
+    } else if (!_.has(obj1, key)) {
+      acc += `+ ${key}: ${obj2[key]}\n`.green
+    } else if (obj1[key] !== obj2[key]) {
+      acc += `- ${key}: ${obj1[key]}\n`.red;
+      acc += `+ ${key}: ${obj2[key]}\n`.green;
     } else {
-      result[`=${key}`] = object1[key];
+      acc += `  ${key}: ${obj1[key]}\n`.yellow;
     }
-  }
-  return result;
-};
+    return acc;
+  }, '');
+  return diff;
+}
 
-const compareFiles = (filename1, filename2) => {
-  const data1 = fs.readFileSync(getAbsolutePath(filename1), 'utf-8');
-  const data2 = fs.readFileSync(getAbsolutePath(filename2), 'utf-8');
-  const object1 = parseData(data1, getFormat(filename1));
-  const object2 = parseData(data2, getFormat(filename2));
-  const diff = compareObjects(object1, object2);
+export default (...filenames) => {
+  const objects = filenames
+  .map((filename) => buildAbsolutePath(filename))
+  .map((filepath) => readFile(filepath))
+  .map((data) => JSON.parse(data));
+
+  const diff = compareObjects(objects);
   console.log(diff);
-};
-export default compareFiles;
+}
