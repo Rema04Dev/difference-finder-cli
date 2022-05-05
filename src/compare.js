@@ -13,11 +13,6 @@ const compareObjects = (objects) => {
   const nodes = keys.map((key) => {
     const [value1, value2] = [obj1[key], obj2[key]];
     if (_.isObject(value1) && _.isObject(value2)) {
-      //   return {
-      //     name: key,
-      //     type: "nested",
-      //     children: compareObjects([value1, value2]),
-      //   };
       return mkNest(key);
     }
     if (!_.has(obj1, key)) {

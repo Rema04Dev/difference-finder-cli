@@ -16,7 +16,7 @@ const gendiff = (...filepaths) => {
   const data = filepaths.map(parseData);
   const diff = compare(data);
   const tree = renderTree(diff);
-  console.log(tree);
+  return tree;
 };
 
-gendiff("file1.json", "file2.json");
+export default gendiff;
