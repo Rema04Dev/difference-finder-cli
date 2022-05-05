@@ -23,7 +23,6 @@
   "dependencies": {
     "colors": "^1.4.0",
     "commander": "^9.1.0",
-    "fs": "^0.0.1-security",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
@@ -34,6 +33,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.1.5",
     "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.16"
   }
 }
