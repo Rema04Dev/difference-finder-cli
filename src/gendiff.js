@@ -17,4 +17,4 @@ const gendiff = (filepath1, filepath2, format = "stylish") => {
   return diff;
 };
 
-console.log(gendiff("children1.json", "children2.json"));
+export default gendiff;

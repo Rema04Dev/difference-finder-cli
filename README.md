@@ -10,4 +10,4 @@
 
 ### Demo
 
-<a href="https://asciinema.org/a/SzdNBdk1GyJHi7ILRqbU1QXxA" target="_blank"><img src="https://asciinema.org/a/SzdNBdk1GyJHi7ILRqbU1QXxA.svg" width="300"/></a>
+<a href="https://asciinema.org/a/oBVqUpoWmj7nAtcXLYhm0B9kz" target="_blank"><img src="https://asciinema.org/a/oBVqUpoWmj7nAtcXLYhm0B9kz.svg" width="300"/></a>
