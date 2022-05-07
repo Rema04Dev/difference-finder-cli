@@ -1,22 +1,20 @@
 import fs from "fs";
 import path from "path";
-import compare from "./compare.js";
 import parse from "./parsers.js";
-import renderTree from "../renderTree.js";
-
+import compare from "./compare.js";
+import stylish from "./stylish.js";
 const parseData = (filepath) => {
   const ext = path.extname(filepath);
   const fullPath = path.resolve(process.cwd(), "__fixtures__", filepath);
   const data = fs.readFileSync(fullPath, "utf-8");
-  const object = parse(data, ext);
-  return object;
+  return parse(data, ext);
+};
+const gendiff = (filepath1, filepath2, format = "stylish") => {
+  const paths = [filepath1, filepath2];
+  const data = paths.map(parseData);
+  const nodes = compare(data);
+  const diff = stylish(nodes);
+  return diff;
 };
 
-const gendiff = (...filepaths) => {
-  const data = filepaths.map(parseData);
-  const diff = compare(data);
-  const tree = renderTree(diff);
-  return tree;
-};
-
-export default gendiff;
+console.log(gendiff("children1.json", "children2.json"));

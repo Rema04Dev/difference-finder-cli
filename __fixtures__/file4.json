@@ -3,5 +3,8 @@
   "age": 32,
   "married": true,
   "children": ["Alena", "Maria"],
-  "city": "Moscow"
+  "location": {
+    "country": "Russia",
+    "city": "Moscow"
+}
 }

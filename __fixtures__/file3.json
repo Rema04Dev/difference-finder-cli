@@ -2,5 +2,8 @@
     "name": "ALexandr",
     "age": 30,
     "married": false,
-    "city": "Moscow"
+    "location": {
+        "country": "Russia",
+        "city": "Moscow"
+    }
 }
