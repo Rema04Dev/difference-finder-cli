@@ -18,9 +18,9 @@ const compare = (objects) => {
       };
     }
     if (!_.has(obj1, key)) return mknode(key, value2, "added");
-    if (!_.has(obj2, key)) return mknode(key, value1, "deleted");
+    if (!_.has(obj2, key)) return mknode(key, value1, "removed");
     if (value1 !== value2)
-      return mknode(key, value2, "changed", { oldValue: value1 });
+      return mknode(key, value2, "updated", { oldValue: value1 });
 
     return mknode(key, value1, "unchanged");
   });

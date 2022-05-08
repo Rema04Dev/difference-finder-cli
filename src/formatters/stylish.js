@@ -3,7 +3,7 @@ import _ from "lodash";
 const symbols = {
   unchanged: " ",
   added: "+",
-  deleted: "-",
+  removed: "-",
   nested: " ",
 };
 
@@ -23,14 +23,14 @@ const stringify = (value, depth) => {
 const renderAst = (node, depth) => {
   switch (node.type) {
     case "added":
-    case "deleted":
+    case "removed":
     case "unchanged":
       return `${setIndent(depth)}${symbols[node.type]} ${node.key}: ${stringify(
         node.value,
         depth + 1
       )}`;
-    case "changed":
-      return `${setIndent(depth)}${symbols.deleted} ${node.key}: ${stringify(
+    case "updated":
+      return `${setIndent(depth)}${symbols.removed} ${node.key}: ${stringify(
         node.meta.oldValue,
         depth + 1
       )}\n${setIndent(depth)}${symbols.added} ${node.key}: ${stringify(
