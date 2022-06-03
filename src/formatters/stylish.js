@@ -1,52 +1,45 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 const symbols = {
-  unchanged: " ",
-  added: "+",
-  removed: "-",
-  nested: " ",
+  unchanged: ' ',
+  removed: '-',
+  added: '+',
 };
 
-const indent = 4;
-const setIndent = (depth, spaces = 2) => " ".repeat(depth * indent - spaces);
+const setIndent = (num, str = ' ') => str.repeat(num * 4 - 2);
 
-const stringify = (value, depth) => {
-  if (!_.isObject(value)) return value;
-  return `{\n${Object.entries(value)
-    .map(
-      ([key, val]) =>
-        `${setIndent(depth)}  ${key}: ${stringify(val, depth + 1)}`
-    )
-    .join("\n")}\n${setIndent(depth - 1)}  }`;
-};
-
-const renderAst = (node, depth) => {
-  switch (node.type) {
-    case "added":
-    case "removed":
-    case "unchanged":
-      return `${setIndent(depth)}${symbols[node.type]} ${node.key}: ${stringify(
-        node.value,
-        depth + 1
-      )}`;
-    case "updated":
-      return `${setIndent(depth)}${symbols.removed} ${node.key}: ${stringify(
-        node.meta.oldValue,
-        depth + 1
-      )}\n${setIndent(depth)}${symbols.added} ${node.key}: ${stringify(
-        node.value,
-        depth + 1
-      )}`;
-    case "nested":
-      return `${setIndent(depth)}${symbols[node.type]} ${
-        node.key
-      }: {\n${node.children
-        .map((node) => renderAst(node, depth + 1))
-        .join("\n")}\n  ${setIndent(depth)}}`;
-    default:
-      throw new Error("Unknown state!");
+const makeString = (value, num = 1) => {
+  if (!_.isObject(value)) {
+    return value;
   }
+  const keys = _.keys(value);
+  const result = keys.map((key) => {
+    const nestedKey = value[key];
+    return `${setIndent(num + 1)}  ${key}: ${makeString(nestedKey, num + 1)}`;
+  });
+  return `{\n${result.join('\n')}\n  ${setIndent(num)}}`;
 };
 
-export default (astDifference) =>
-  `{\n${astDifference.map((elem) => renderAst(elem, 1)).join("\n")}\n}`;
+const stylish = (obj) => {
+  const iter = (node, num = 1) => {
+    const {
+      type, key, value, meta, children,
+    } = node;
+    switch (type) {
+      case 'removed':
+      case 'added':
+      case 'unchanged':
+        return `${setIndent(num)}${symbols[type]} ${key}: ${makeString(value, num)}`;
+      case 'updated':
+        return `${setIndent(num)}${symbols.removed} ${key}: ${makeString(meta.oldValue, num)}\n${setIndent(num)}${symbols.added} ${key}: ${makeString(value, num)}`;
+      case 'nested': {
+        const objectResult = children.flatMap((child) => iter(child, num + 1));
+        return `${setIndent(num)}  ${key}: {\n${objectResult.join('\n')}\n${setIndent(num)}  }`;
+      }
+    }
+    return node;
+  };
+  const result = obj.map((item) => iter(item));
+  return `{\n${result.join('\n')}\n}`;
+};
+export default stylish;

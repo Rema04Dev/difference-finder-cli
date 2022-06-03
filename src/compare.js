@@ -1,4 +1,5 @@
-import _ from "lodash";
+import _ from 'lodash';
+
 const mknode = (key, value, type, meta = {}) => ({
   key,
   value,
@@ -13,16 +14,15 @@ const compare = (objects) => {
     if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
       return {
         key,
-        type: "nested",
+        type: 'nested',
         children: compare([value1, value2]),
       };
     }
-    if (!_.has(obj1, key)) return mknode(key, value2, "added");
-    if (!_.has(obj2, key)) return mknode(key, value1, "removed");
-    if (value1 !== value2)
-      return mknode(key, value2, "updated", { oldValue: value1 });
+    if (!_.has(obj1, key)) return mknode(key, value2, 'added');
+    if (!_.has(obj2, key)) return mknode(key, value1, 'removed');
+    if (value1 !== value2) return mknode(key, value2, 'updated', { oldValue: value1 });
 
-    return mknode(key, value1, "unchanged");
+    return mknode(key, value1, 'unchanged');
   });
   return nodes;
 };
