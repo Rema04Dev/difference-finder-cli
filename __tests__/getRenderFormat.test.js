@@ -1,30 +1,22 @@
-import { fileURLToPath } from 'url';
-import path, { dirname } from 'path';
-import * as fs from 'fs';
-import gendiff from '../src/index.js';
+import genDiff from '../src/index.js';
+import { getFixturePath, readFile } from '../__fixtures__/getFixturePath.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-const readFile = (filename) => fs.readFileSync(filename, 'utf-8');
+const stylishResult = readFile('stylish.expect.txt');
 
-const expectStylish = readFile(getFixturePath('stylish.expect.txt'));
-// const expectPlain = readFile(getFixturePath('plain.expect.txt'));
-const yamlFile1 = getFixturePath('file1.yaml');
-const yamlFile2 = getFixturePath('file2.yaml');
-const jsonFile1 = getFixturePath('file1.json');
-const jsonFile2 = getFixturePath('file2.json');
+const file1json = getFixturePath('file1.json');
+const file2json = getFixturePath('file2.json');
+const file1yaml = getFixturePath('file1.yml');
+const file2yml = getFixturePath('file2.yml');
 
-test.each([
-  [yamlFile1, yamlFile2, expectStylish],
-  [jsonFile1, jsonFile2, expectStylish],
-])('Test format stylish (%s, %s)', (file1, file2, expected) => {
-  expect(gendiff(file1, file2, 'stylish')).toBe(expected);
+test('result is string', () => {
+  expect(typeof genDiff(file1json, file2json, 'stylish')).toEqual('string');
 });
-
-// test.each([
-//   [yamlFile1, yamlFile2, expectPlain],
-//   [jsonFile1, jsonFile2, expectPlain],
-// ])('Test format plain (%s, %s)', (file1, file2, expected) => {
-//   expect(gendiff(file1, file2, 'plain')).toBe(expected);
-// });
+test('stylish json-json', () => {
+  expect(genDiff(file1json, file2json, 'stylish')).toEqual(stylishResult);
+});
+test('stylish yaml-yml', () => {
+  expect(genDiff(file1yaml, file2yml)).toEqual(stylishResult);
+});
+test('stylish yaml-json', () => {
+  expect(genDiff(file1yaml, file2json)).toEqual(stylishResult);
+});
