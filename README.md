@@ -24,6 +24,8 @@ make install
 ```
 npm link
 ```
-### How it works
-#### Demo
-<a href="https://asciinema.org/a/oBVqUpoWmj7nAtcXLYhm0B9kz" target="_blank"><img src="https://asciinema.org/a/oBVqUpoWmj7nAtcXLYhm0B9kz.svg" width="300"/></a>
+### Get started
+<a href="https://asciinema.org/a/fR1ZptVRn8ISi6ucnvSAhIszP" target="_blank"><img src="https://asciinema.org/a/fR1ZptVRn8ISi6ucnvSAhIszP.svg" width="300"/></a>
+
+#### Different outcoming types
+<a href="https://asciinema.org/a/HhcHljiMYvZtkBGLvbHbQYRVv" target="_blank"><img src="https://asciinema.org/a/HhcHljiMYvZtkBGLvbHbQYRVv.svg" width="300"/></a>
