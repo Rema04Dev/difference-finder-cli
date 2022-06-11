@@ -7,6 +7,8 @@ const getRenderFormat = (tree, format) => {
     render = stylish;
   } else if (format === 'plain') {
     render = plain;
+  } else if (format === 'json') {
+    render = JSON.stringify;
   }
   return render(tree);
 };

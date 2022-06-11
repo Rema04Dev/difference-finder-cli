@@ -3,6 +3,8 @@ import { getFixturePath, readFile } from '../__fixtures__/getFixturePath.js';
 
 const stylishResult = readFile('stylish.expect.txt');
 const plainResult = readFile('plain.expect.txt');
+const jsonResult = readFile('json.expect.txt');
+
 const file1json = getFixturePath('file1.json');
 const file2json = getFixturePath('file2.json');
 const file1yaml = getFixturePath('file1.yml');
@@ -28,3 +30,12 @@ test('plain yaml-josn', () => {
   expect(genDiff(file1yaml, file2json, 'plain')).toEqual(plainResult);
 });
 
+test('json json-json', () => {
+  expect(genDiff(file1json, file2json, 'json')).toEqual(jsonResult);
+});
+test('json yaml-yml', () => {
+  expect(genDiff(file1yaml, file2yml, 'json')).toEqual(jsonResult);
+});
+test('json yaml-json', () => {
+  expect(genDiff(file1yaml, file2json, 'json')).toEqual(jsonResult);
+});
