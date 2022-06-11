@@ -9,6 +9,6 @@ const getRenderFormat = (tree, format = 'stylish') => {
     render = plain;
   }
   return render(tree);
-}
+};
 
 export default getRenderFormat;
