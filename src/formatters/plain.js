@@ -1,28 +1,36 @@
-// import _ from 'lodash';
+import _ from 'lodash';
 
-// const stringify = (node) => {
-//   if (_.isObject(node)) {
-//     return '[complex value]';
-//   }
-//   return `${node}`;
-// };
+const makeString = (value) => {
+  if (_.isObject(value)) {
+    return '[complex value]';
+  }
+  return typeof value === 'string' ? `'${value}'` : value;
+};
 
-// const buildAst = (nodes) => {
-//   const tree = nodes.map((node) => {
-//     const {
-//       key, value, type, meta,
-//     } = node;
-//     switch (type) {
-//       case 'added':
-//         return `Property ${key} was ${type} with value: ${value}`;
-//       case 'removed':
-//         return `Property ${key} was ${type}`;
-//       case 'updated':
-//         return `Property ${key} was ${type}. From '${meta.oldValue}' to '${value}'`;
-//       case 'unchanged':
-//         return null;
-//     }
-//   });
-//   return tree;
-// };
-// export default (tree) => `${buildAst(tree).join('\n')}`;
+const plain = (nodes) => {
+  const iter = (node, parent = '') => {
+    const {
+      type, key, value, meta, children,
+    } = node;
+    let nestedValue;
+    switch (type) {
+      case 'nested':
+        nestedValue = children.flatMap((child) => iter(child, `${parent}${key}.`));
+        return nestedValue.join('\n');
+      case 'removed':
+        return `Property '${parent}${key}' was removed`;
+      case 'added':
+        return `Property '${parent}${key}' was added with value: ${makeString(value)}`;
+      case 'updated':
+        return `Property '${parent}${key}' was updated. From ${makeString(meta.oldValue)} to ${makeString(value)}`;
+      case 'unchanged':
+        return [];
+      default: console.log('Error!');
+    }
+    return node;
+  };
+  const result = nodes.map((node) => iter(node));
+  return `${result.join('\n')}`;
+};
+
+export default plain;

@@ -43,4 +43,5 @@ const stylish = (obj) => {
   const result = obj.map((item) => iter(item));
   return `{\n${result.join('\n')}\n}`;
 };
+
 export default stylish;

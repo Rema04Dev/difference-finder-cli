@@ -9,7 +9,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 
 ### Description
-A simple utility that compares two configuration files (json, yml/yaml)
+A simple utility that compares two configureation files and shows a difference (json, yml/yaml)
 
 ### Setup
 1. Clone this repository

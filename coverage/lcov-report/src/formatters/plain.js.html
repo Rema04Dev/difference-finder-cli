@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/14</span>
+                <span class='fraction'>18/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>10/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/14</span>
+                <span class='fraction'>16/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -91,62 +91,86 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import _ from 'lodash';
 &nbsp;
-const stringify = <span class="fstat-no" title="function not covered" >(n</span>ode) =&gt; {
-<span class="cstat-no" title="statement not covered" >  if (_.isObject(node)) {</span>
-<span class="cstat-no" title="statement not covered" >    return '[complex value]';</span>
+const makeString = (value) =&gt; {
+  if (_.isObject(value)) {
+    return '[complex value]';
   }
-<span class="cstat-no" title="statement not covered" >  return `${node}`;</span>
+  return typeof value === 'string' ? `'${value}'` : value;
 };
 &nbsp;
-const buildAst = <span class="fstat-no" title="function not covered" >(n</span>odes) =&gt; {
-  const tree = <span class="cstat-no" title="statement not covered" >nodes.map(<span class="fstat-no" title="function not covered" >(n</span>ode) =&gt; {</span>
+const plain = (nodes) =&gt; {
+  const iter = (node, parent = '') =&gt; {
     const {
-      key, value, type, meta,
-    } = <span class="cstat-no" title="statement not covered" >node;</span>
-<span class="cstat-no" title="statement not covered" >    switch (type) {</span>
-      case 'added':
-<span class="cstat-no" title="statement not covered" >        return `Property ${key} was ${type} with value: ${value}`;</span>
+      type, key, value, meta, children,
+    } = node;
+    let nestedValue;
+    switch (type) {
+      case 'nested':
+        nestedValue = children.flatMap((child) =&gt; iter(child, `${parent}${key}.`));
+        return nestedValue.join('\n');
       case 'removed':
-<span class="cstat-no" title="statement not covered" >        return `Property ${key} was ${type}`;</span>
+        return `Property '${parent}${key}' was removed`;
+      case 'added':
+        return `Property '${parent}${key}' was added with value: ${makeString(value)}`;
       case 'updated':
-<span class="cstat-no" title="statement not covered" >        return `Property ${key} was ${type}. From '${meta.oldValue}' to '${value}'`;</span>
+        return `Property '${parent}${key}' was updated. From ${makeString(meta.oldValue)} to ${makeString(value)}`;
       case 'unchanged':
-<span class="cstat-no" title="statement not covered" >        return null;</span>
+        return [];
+<span class="branch-5 cbranch-no" title="branch not covered" >      default: <span class="cstat-no" title="statement not covered" >console.log('Error!');</span></span>
     }
-  });
-<span class="cstat-no" title="statement not covered" >  return tree;</span>
+<span class="cstat-no" title="statement not covered" >    return node;</span>
+  };
+  const result = nodes.map((node) =&gt; iter(node));
+  return `${result.join('\n')}`;
 };
-export default <span class="fstat-no" title="function not covered" >(t</span>ree) =&gt; <span class="cstat-no" title="statement not covered" >`${buildAst(tree).join('\n')}`;</span>
+&nbsp;
+export default plain;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -154,7 +178,7 @@ export default <span class="fstat-no" title="function not covered" >(t</span>ree
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sat Jun 11 2022 13:46:07 GMT+0300 (Moscow Standard Time)
+                at Sat Jun 11 2022 17:21:03 GMT+0300 (Moscow Standard Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>

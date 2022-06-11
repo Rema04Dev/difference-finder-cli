@@ -1,7 +1,7 @@
 import stylish from './stylish.js';
 import plain from './plain.js';
 
-const getRenderFormat = (tree, format = 'stylish') => {
+const getRenderFormat = (tree, format) => {
   let render;
   if (format === 'stylish') {
     render = stylish;

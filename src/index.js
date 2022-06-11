@@ -17,7 +17,5 @@ const gendiff = (filepath1, filepath2, formatName = 'stylish') => {
   const formatAst = getRenderFormat(diff, formatName);
   return formatAst;
 };
-// console.log(gendiff("children1.json", "children2.json", "plain"));
-console.log(gendiff('file1.json', 'file2.json', 'stylish'));
 
 export default gendiff;
