@@ -6,8 +6,7 @@ import getRenderFormat from './formatters/index.js';
 
 const parseData = (filepath) => {
   const ext = path.extname(filepath);
-  const fullPath = path.resolve(process.cwd(), '__fixtures__', filepath);
-  const data = fs.readFileSync(fullPath, 'utf-8');
+  const data = fs.readFileSync(path.resolve(filepath), 'utf-8');
   return parse(data, ext);
 };
 const gendiff = (filepath1, filepath2, formatName = 'stylish') => {
