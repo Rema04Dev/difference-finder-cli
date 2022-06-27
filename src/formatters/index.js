@@ -3,14 +3,14 @@ import plain from './plain.js';
 
 const getRenderFormat = (tree, format) => {
   let render;
-  if (format === 'stylish') {
-    render = stylish;
-  } else if (format === 'plain') {
-    render = plain;
-  } else if (format === 'json') {
-    render = JSON.stringify;
+  switch (format) {
+    case 'stylish':
+      return stylish(tree);
+    case 'plain':
+      return plain(tree);
+    case 'json':
+      return JSON.stringify(tree);
   }
-  return render(tree);
 };
 
 export default getRenderFormat;
