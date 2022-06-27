@@ -2,15 +2,19 @@ import stylish from './stylish.js';
 import plain from './plain.js';
 
 const getRenderFormat = (tree, format) => {
-  let render;
+  let parse;
   switch (format) {
     case 'stylish':
-      return stylish(tree);
+      parse = stylish;
+      break;
     case 'plain':
-      return plain(tree);
+      parse = plain;
+      break;
     case 'json':
-      return JSON.stringify(tree);
+      parse =  JSON.stringify;
+      break;
   }
+  return parse(tree);
 };
 
 export default getRenderFormat;
