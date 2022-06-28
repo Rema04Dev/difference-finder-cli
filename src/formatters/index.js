@@ -2,19 +2,16 @@ import stylish from './stylish.js';
 import plain from './plain.js';
 
 const getRenderFormat = (tree, format) => {
-  let parse;
   switch (format) {
     case 'stylish':
-      parse = stylish;
-      break;
+      return stylish(tree);
     case 'plain':
-      parse = plain;
-      break;
+      return plain(tree);
     case 'json':
-      parse =  JSON.stringify;
-      break;
+      return JSON.stringify(tree);
+    default:
+      throw new Error(`format ${format} is not supported`);
   }
-  return parse(tree);
 };
 
 export default getRenderFormat;
