@@ -8,7 +8,7 @@ const getRenderFormat = (tree, format) => {
     case 'plain':
       return plain(tree);
     case 'json':
-      return JSON.stringify(tree);
+      return JSON.stringify(tree, null, ' ');
     default:
       throw new Error(`format ${format} is not supported`);
   }
