@@ -2,13 +2,14 @@
 
 [![Actions Status](https://github.com/Rema04Dev/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Rema04Dev/frontend-project-lvl2/actions)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/Rema04Dev/frontend-project-lvl2)
-
-[![Jest-Test](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/gendiff.yml/badge.svg)](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/jest-test.yml)
-
-[![Test Coverage](https://api.codeclimate.com/v1/badges/7f4267c8623d9f28cddd/test_coverage)](https://codeclimate.com/github/Rema04Dev/frontend-project-lvl2/test_coverage)
+[![jest-test](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/jest-test.yml/badge.svg)](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/jest-test.yml)
 
 [![Linter Status](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/linter.yml/badge.svg)](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/linter.yml)
+
+<!-- Codeclimate links -->
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/Rema04Dev/frontend-project-lvl2)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7f4267c8623d9f28cddd/test_coverage)](https://codeclimate.com/github/Rema04Dev/frontend-project-lvl2/test_coverage)
 
 ### Description
 A simple utility that compares two configureation files and shows a difference (json, yml/yaml)
