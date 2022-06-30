@@ -31,4 +31,4 @@ npm link
 <a href="https://asciinema.org/a/fR1ZptVRn8ISi6ucnvSAhIszP" target="_blank"><img src="https://asciinema.org/a/fR1ZptVRn8ISi6ucnvSAhIszP.svg" width="300"/></a>
 
 #### Different outcoming types
-<a href="https://asciinema.org/a/HhcHljiMYvZtkBGLvbHbQYRVv" target="_blank"><img src="https://asciinema.org/a/HhcHljiMYvZtkBGLvbHbQYRVv.svg" width="300"/></a>
+<a href="https://asciinema.org/a/Iv08mlLDbBzc32Y9410yE8SYp" target="_blank"><img src="https://asciinema.org/a/Iv08mlLDbBzc32Y9410yE8SYp.svg" width="300"/></a>
