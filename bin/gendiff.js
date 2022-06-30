@@ -13,4 +13,4 @@ program
     console.log(diff);
   });
 
-program.parse(process.argv);
+program.parse();
