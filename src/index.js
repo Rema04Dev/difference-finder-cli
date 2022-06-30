@@ -4,7 +4,7 @@ import parse from './parsers.js';
 import compare from './compare.js';
 import getRenderFormat from './formatters/index.js';
 
-const getFullPath = (filepath) => path.resolve(process.cwd(), filepath)
+const getFullPath = (filepath) => path.resolve(process.cwd(), filepath);
 const parseData = (filepath) => {
   const ext = path.extname(filepath);
   const data = fs.readFileSync(getFullPath(filepath), 'utf-8');

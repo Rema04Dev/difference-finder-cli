@@ -2,10 +2,10 @@ install:
 	npm ci
 	
 lint:
-	npx eslint --fix .
+	npx eslint .
 	
 test:
 	npm test
 
 test-coverage:
-	npx jest --coverage --coverageProvider=v8
+	npm test --coverage --coverageProvider=v8
