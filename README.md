@@ -4,9 +4,11 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/Rema04Dev/frontend-project-lvl2)
 
-[![Linter Status](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/gendiff.yml/badge.svg)](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/gendiff.yml)
+[![Jest-Test](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/gendiff.yml/badge.svg)](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/jest-test.yml)
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7f4267c8623d9f28cddd/test_coverage)](https://codeclimate.com/github/Rema04Dev/frontend-project-lvl2/test_coverage)
+
+[![Linter Status](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/linter.yml/badge.svg)](https://github.com/Rema04Dev/frontend-project-lvl2/actions/workflows/linter.yml)
 
 ### Description
 A simple utility that compares two configureation files and shows a difference (json, yml/yaml)
