@@ -8,8 +8,9 @@ const mknode = (key, value, type, meta = {}) => ({
 });
 const compare = (objects) => {
   const [obj1, obj2] = objects;
-  const keys = _.union(_.keys(obj1), _.keys(obj2)).sort();
-  const nodes = keys.map((key) => {
+  const keys = _.union(_.keys(obj1), _.keys(obj2));
+  const sortedKeys = _.sortBy(keys)
+  const nodes = sortedKeys.map((key) => {
     const [value1, value2] = [obj1[key], obj2[key]];
     if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
       return {
