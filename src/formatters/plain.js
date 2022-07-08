@@ -12,10 +12,9 @@ const plain = (nodes) => {
     const {
       type, key, value, meta, children,
     } = node;
-    let nestedValue;
     switch (type) {
       case 'nested':
-        nestedValue = children.flatMap((child) => iter(child, `${parent}${key}.`));
+        const nestedValue = children.flatMap((child) => iter(child, `${parent}${key}.`));
         return nestedValue.join('\n');
       case 'removed':
         return `Property '${parent}${key}' was removed`;
