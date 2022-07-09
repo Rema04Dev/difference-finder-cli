@@ -23,8 +23,7 @@ const plain = (nodes) => {
         return `Property '${parent}${key}' was updated. From ${makeString(meta.oldValue)} to ${makeString(value)}`;
       case 'unchanged':
         return [];
-      default:
-        throw new Error(`Unknown type: ${type}`);
+      default: throw new Error(`Unknown type: ${type}`);
     }
   };
   const result = nodes.map((node) => iter(node));
