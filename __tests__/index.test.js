@@ -1,5 +1,9 @@
+import path from 'path';
+import fs from 'fs';
 import genDiff from '../src/index.js';
-import { getFixturePath, readFile } from '../__fixtures__/getFixturePath.js';
+
+const getFixturePath = (filename) => path.resolve(process.cwd(), '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 const stylishResult = readFile('stylish.expect.txt');
 const plainResult = readFile('plain.expect.txt');

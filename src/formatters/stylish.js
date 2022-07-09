@@ -36,9 +36,9 @@ const stylish = (obj) => {
         const objectResult = children.flatMap((child) => iter(child, num + 1));
         return `${setIndent(num)}  ${key}: {\n${objectResult.join('\n')}\n${setIndent(num)}  }`;
       }
-      default: console.log('Error!');
+      default: 
+        throw new Error(`Unknown type: ${type}`);
     }
-    return node;
   };
   const result = obj.map((item) => iter(item));
   return `{\n${result.join('\n')}\n}`;

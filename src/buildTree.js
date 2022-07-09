@@ -6,7 +6,7 @@ const mknode = (key, value, type, meta = {}) => ({
   type,
   meta,
 });
-const compare = (objects) => {
+const buildTree = (objects) => {
   const [obj1, obj2] = objects;
   const keys = _.union(_.keys(obj1), _.keys(obj2));
   const sortedKeys = _.sortBy(keys);
@@ -16,7 +16,7 @@ const compare = (objects) => {
       return {
         key,
         type: 'nested',
-        children: compare([value1, value2]),
+        children: buildTree([value1, value2]),
       };
     }
     if (!_.has(obj1, key)) return mknode(key, value2, 'added');
@@ -28,4 +28,4 @@ const compare = (objects) => {
   return nodes;
 };
 
-export default compare;
+export default buildTree;
