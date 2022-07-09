@@ -17,7 +17,7 @@ const file2yml = getFixturePath('file2.yml');
 test.each([
   [file1json, file2json, stylishResult],
   [file1yaml, file2yml, stylishResult],
-  [file1json, file2yml, stylishResult]
+  [file1json, file2yml, stylishResult],
 ])('Stylish', (file1, file2, expected) => {
   expect(genDiff(file1, file2, 'stylish')).toBe(expected);
 });
@@ -25,7 +25,15 @@ test.each([
 test.each([
   [file1json, file2json, plainResult],
   [file1yaml, file2yml, plainResult],
-  [file1json, file2yml, plainResult]
+  [file1json, file2yml, plainResult],
 ])('Plain', (file1, file2, expected) => {
   expect(genDiff(file1, file2, 'plain')).toBe(expected);
+});
+
+test.each([
+  [file1json, file2json, jsonResult],
+  [file1yaml, file2yml, jsonResult],
+  [file1json, file2yml, jsonResult],
+])('Plain', (file1, file2, expected) => {
+  expect(genDiff(file1, file2, 'json')).toBe(expected);
 });
